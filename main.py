@@ -1,6 +1,6 @@
 #Libraries to Import
 import csv
-import os
+import sys
 
 # Global
 States = ["Alabama", "Alaska", "Arizona","Arkansas","California","Colorado",
@@ -13,12 +13,16 @@ States = ["Alabama", "Alaska", "Arizona","Arkansas","California","Colorado",
           "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin",
           "Wyoming"]
 
+
+
 # Main
 def main():
+    print("")
     for i in range(len(States)):
         print(States[i], ReadCsv(States[i]))
         print("")
-
+        print("---------------------------------------------")
+        print("")
 
 #
 # Functions
@@ -30,6 +34,7 @@ def ReadCsv(state):
     type = []
     amount = []
     File_Name = state + " Bias Types 2022.csv"
+    File_Name = "Data Folder\\United States of Hatecrimes\\" + File_Name
     with open(File_Name, mode='r') as csvfile:
         file = csv.reader(csvfile)
         for row in csvfile:
