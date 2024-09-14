@@ -40,11 +40,10 @@ def CheckLGBTQ(data):
         for j in range(len(KeyWords)):
             if data[i][0].find(KeyWords[j]) != -1:
                 total = total + int(data[i][1])
+                Marked.append([data[i][0],data[i][1]])
             else:
-                Marked.append(i)
-    for k in range(len(Marked)):
-        print(Marked[k])
-    return total, data
+                pass
+    return total, Marked    
 
 
 # Runs main
