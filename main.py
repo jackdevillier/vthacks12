@@ -1,6 +1,6 @@
 #Libraries to Import
 import csv
-import sys
+
 
 # Global
 States = ["Alabama", "Alaska", "Arizona","Arkansas","California","Colorado",
