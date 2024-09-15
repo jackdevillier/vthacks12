@@ -139,7 +139,6 @@ def JSONDumpCities(Acro, Cities):
     json_object = json.dumps(Cities, indent=4)
     for p in range(0, len(Acro),2):
         json_object = json.dumps(Cities[p]+Cities[p+1], indent=4)
-        print(Acro)
         Acro[p] = Acro[p].replace('"', "")
         File_Name = "JSONCityRanks\\"+ Acro[p]
         with open(File_Name, "w") as outfile:
