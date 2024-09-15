@@ -1075,7 +1075,7 @@
         statebuttons[i].addEventListener("click", () => {
             fetch(`./map/${statebuttons[i].id}`)
               .then(response => response.json())
-              .then(json => console.log(json.test))
+              .then(json => console.log(json))
         })
     }
   </script>
