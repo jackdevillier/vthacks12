@@ -1113,6 +1113,12 @@
               .then(json => console.log(json))
         })
     }
-  </script>
+
+    function zoom() {
+        var circle = document.getElementById('[statename]');
+        circle.setAttribute("transform", "scale(1.5)");
+    }
+
+  </script>   
 
 </html>
