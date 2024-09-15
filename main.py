@@ -1,6 +1,6 @@
 #Libraries to Import
 import csv
-
+import json
 
 # Global
 States = ["Alabama", "Alaska", "Arizona","Arkansas","California","Colorado",
@@ -23,13 +23,13 @@ StatesShorten = ["AL", "AK", "AZ", "AR", "CA", "CO","CT","DE", "DC","FL","GA",
 
 # Main
 def main():
-    print("")
     for i in range(len(States)):
-        print(States[i], ReadCsv(States[i]))
-        print("")
-        print("---------------------------------------------")
-        print("")
-    print(LGBTQCities())
+        data, total = ReadCsv(States[i])
+        data = ConvertData(data)
+        JSONDump(States[i], data)
+        JSONDumpTot(States[i], total)
+    Cities, Acro = (ConvertDataCities(LGBTQCities()))
+    JSONDumpCities(Acro, Cities)
 
 #
 # Functions
@@ -68,6 +68,27 @@ def CheckLGBTQ(data):
                 pass
     return total, Marked    
 
+def ConvertData(data):
+    dict = {}
+    for o in range(0, len(data),2):
+        dict[o] = data[o]
+        dict[o+1] = data[o+1]
+    return dict
+
+#JSON File Dump
+def JSONDump(State, Data):
+    json_object = json.dumps(Data, indent=4)
+    File_Name = "JSONFolder\\"+ State
+    with open(File_Name, "w") as outfile:
+        outfile.write(json_object)
+
+def JSONDumpTot(State, Total):
+    json_object = json.dumps(Total, indent=4)
+    File_Name = "JSONTot\\"+ State + "Tot"
+    with open(File_Name, "w") as outfile:
+        outfile.write(json_object)
+
+
 #MostLGBTQ+ Cities
 #Gathers cities data
 def LGBTQCities():
@@ -105,7 +126,24 @@ def GayestCityFinder(data):
             w = w + 1
     return GayestCity
 
-        
+def ConvertDataCities(data):
+    dict = {}
+    Acronym = [0]*len(data)
+    for o in range(0, len(data),2):
+        dict[o] = data[o][0]
+        dict[o+1] = data[o][2]
+        Acronym[o] = str(data[o][1])
+    return dict, Acronym
+
+def JSONDumpCities(Acro, Cities):
+    json_object = json.dumps(Cities, indent=4)
+    for p in range(0, len(Acro),2):
+        json_object = json.dumps(Cities[p]+Cities[p+1], indent=4)
+        print(Acro)
+        Acro[p] = Acro[p].replace('"', "")
+        File_Name = "JSONCityRanks\\"+ Acro[p]
+        with open(File_Name, "w") as outfile:
+            outfile.write(json_object)
 
 # Runs main
 main()
