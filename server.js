@@ -6,8 +6,6 @@ const populations = require("./population.json")
 const uni = require("./uni.json")
 const parseCity = require("./fileread")
 const fs = require("fs")
-// app.set('view engine', 'pug')
-// app.set('views', './views')
 
 
 app.get('/', (req, res) => {

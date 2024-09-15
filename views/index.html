@@ -1122,14 +1122,9 @@
                 document.getElementById("state-header").innerHTML = `${json.state} Queer Statistics`;
                 document.getElementById("state-city").innerHTML = `Best Queer-Friendly City to Live In: ${json.city}`
                 document.getElementById("state-uni").innerHTML = `Best Queer-Friendly University: ${json.uni}`
-                document.getElementById("state-crimes").innerHTML = `Queer Hate Crime Count, 2022: ${json.crime}`
+                document.getElementById("state-crimes").innerHTML = `Queer Hate Crime Rate per 100000 people, 2022: ${json.crime}`
                 document.getElementById("state-policy").innerHTML = `Queer Rights/Policy Rating: ${json.policy}`
               })
-        })
-
-        statebuttons[i].addEventListener("mouseover", () => {
-            statebuttons[i].setAttribute("color", "black");
-            console.log(statebuttons[i].getAttribute("color"))
         })
     }
 
