@@ -28,7 +28,6 @@ app.get('/map/:state', (req, res) => {
     let bestcity = "N/A"
     try {
         let unparsed_bestcity = fs.readFileSync(`./JSONCityRanks/${states[req.params.state]}`).toString();
-        console.log(unparsed_bestcity)
         bestcity = parseCity(unparsed_bestcity)
     }
     catch (error) {

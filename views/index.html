@@ -1094,11 +1094,11 @@
     </div>
     <div style="position: absolute; top: 30px; left: 700px; border: 3px solid #706cba; padding: 20px; border-radius: 50px; background: #dadaf3; width: 500px; height: 500px;" id="info-container">
       <div id="info-text">
-        <p id="state-header">State Header</p>
-        <p class="state-info" id="state-crimes">Hate Crimes</p>
-        <p class="state-info" id="state-uni">Uni</p>
-        <p class="state-info" id="state-city">City</p>
-        <p class="state-info" id="policy">Policy</p>
+        <h3 id="state-header">Click on a state to learn more about queer quality of life there!</h3>
+        <p class="state-info" id="state-crimes"></p>
+        <p class="state-info" id="state-uni"></p>
+        <p class="state-info" id="state-city"></p>
+        <p class="state-info" id="state-policy"></p>
       </div>
     </div>
   </body>
@@ -1111,9 +1111,9 @@
               .then(response => response.json())
               .then(json => {
                 document.getElementById("state-header").innerHTML = `${json.state} Queer Statistics`;
-                document.getElementById("state-crimes").innerHTML = `Queer Hate Crime Count, 2022: ${json.crime}`
                 document.getElementById("state-city").innerHTML = `Best Queer-Friendly City to Live In: ${json.city}`
                 document.getElementById("state-uni").innerHTML = `Best Queer-Friendly University: ${json.uni}`
+                document.getElementById("state-crimes").innerHTML = `Queer Hate Crime Count, 2022: ${json.crime}`
                 document.getElementById("state-policy").innerHTML = `Queer Rights/Policy Rating: ${json.policy}`
               })
         })
