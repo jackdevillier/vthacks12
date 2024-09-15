@@ -13,6 +13,12 @@ States = ["Alabama", "Alaska", "Arizona","Arkansas","California","Colorado",
           "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin",
           "Wyoming"]
 
+StatesShorten = ["AL", "AK", "AZ", "AR", "CA", "CO","CT","DE", "DC","FL","GA",
+                 "HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI",
+                 "MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH",
+                 "OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV",
+                 "WI","WY"]
+
 
 
 # Main
@@ -23,11 +29,13 @@ def main():
         print("")
         print("---------------------------------------------")
         print("")
+    print(LGBTQCities())
 
 #
 # Functions
 #
 
+#United States of Hatecrimes
 # Data Collection
 def ReadCsv(state):
     data = []
@@ -46,8 +54,6 @@ def ReadCsv(state):
     total, data = CheckLGBTQ(data)
     return data, total
 
-
-
 #Checking data from list for LGBTQ+ Hate Crimes
 def CheckLGBTQ(data):
     total = 0
@@ -62,6 +68,44 @@ def CheckLGBTQ(data):
                 pass
     return total, Marked    
 
+#MostLGBTQ+ Cities
+#Gathers cities data
+def LGBTQCities():
+    data = []
+    File_Name = "Data Folder\\Most LGBT Friendly Cities 2023.csv"
+    with open(File_Name, mode='r') as csvfile:
+        for row in csvfile:
+            data.append(row)
+        for i in range(len(data)):
+            data[i] = data[i].split(",")
+            data[i].pop(8)
+            data[i].pop(7)
+            data[i].pop(6)
+            data[i].pop(5)
+            data[i].pop(4)
+            data[i].pop(0)
+        data.pop(0)
+    return GayestCityFinder(data)
+
+#Queerest City Per State
+def GayestCityFinder(data):
+    GayestCity = []
+    StatesShortenTemp = StatesShorten
+    for j in range(len(StatesShorten)):
+        w = 0
+        pop = False
+        while w < 200 and pop == False:
+            if data[w][1].find(StatesShortenTemp[0]) != -1:
+                GayestCity.append([data[w][0],data[w][1],data[w][2]])
+                pop = True
+                StatesShortenTemp.pop(0)
+                break
+            elif data[w][1].find(StatesShortenTemp[0]) == -1 and w == 199:
+                StatesShortenTemp.pop(0)
+            w = w + 1
+    return GayestCity
+
+        
 
 # Runs main
 main()
