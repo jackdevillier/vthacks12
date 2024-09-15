@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>deQlassified</title>
+    <link href="https://fonts.cdnfonts.com/css/top-secret" rel="stylesheet">
     <style>
-      <link href="https://fonts.cdnfonts.com/css/top-secret" rel="stylesheet">
       body {
         background: grey;
       }
@@ -1101,6 +1101,15 @@
         <p class="state-info" id="state-policy"></p>
       </div>
     </div>
+
+    <div style="position: absolute; width: 300px; top: 70px; left: 300px; font-size: 18px; text-align: center; font-family: 'Top Secret';"; id="short-blurb">
+      <p>Queer Safety Statistics in the USA at a glance</p>
+    </div>
+    
+    <div style="position: absolute; width: 300px; top: 150px; left: 300px; font-size: 18px; text-align: center; font-family: 'Top Secret'; color: #401C5A" id="short-blurb">
+        <p>Darker purple states indicate harsher laws against queer people</p>
+    </div>
+    
   </body>
   <script>
     const statebuttons = document.getElementsByClassName("state-button");
@@ -1113,7 +1122,7 @@
                 document.getElementById("state-header").innerHTML = `${json.state} Queer Statistics`;
                 document.getElementById("state-city").innerHTML = `Best Queer-Friendly City to Live In: ${json.city}`
                 document.getElementById("state-uni").innerHTML = `Best Queer-Friendly University: ${json.uni}`
-                document.getElementById("state-crimes").innerHTML = `Queer Hate Crime Rate per 100000 people, 2022: ${json.crime}`
+                document.getElementById("state-crimes").innerHTML = `Queer Hate Crime Count, 2022: ${json.crime}`
                 document.getElementById("state-policy").innerHTML = `Queer Rights/Policy Rating: ${json.policy}`
               })
         })
